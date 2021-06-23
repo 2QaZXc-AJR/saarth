@@ -1,0 +1,33 @@
+{
+  "expo": {
+    "name": "Saarth",
+    "slug": "Saarth",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/saarth.png",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#add8e6"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/saarth.png",
+        "backgroundColor": "#FFFFFF"
+      },
+      "package": "Saarth.apk"
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    }
+  }
+}
