@@ -5,7 +5,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Ionicons } from '@expo/vector-icons';
-
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import LocationScreen from '../Source/Screens/LocationScreen';
 import LogInScreen from '../Source/Screens/LogInScreen';
 import SignUpScreen from '../Source/Screens/SignUpScreen';
@@ -26,12 +26,19 @@ import SearchScreen from '../Source/Screens/SearchScreen';
 
 const AuthStack = createStackNavigator();
 const AuthFlow = () => (
-    <AuthStack.Navigator>
-        <AuthStack.Screen name='LogIn' component={LogInScreen} 
-        options={{title: 'Log In', headerTitleAlign: 'center'}}/>
-        <AuthStack.Screen name='SignUp' component={SignUpScreen} 
-        options={{title: 'Sign Up', headerTitleAlign: 'center'}}/>
-    </AuthStack.Navigator>
+  <AuthStack.Navigator>
+    <AuthStack.Screen
+      name="LogIn"
+      component={LogInScreen}
+      options={{ title: "Log In", headerTitleAlign: "center" }}
+    />
+    <AuthStack.Screen name="Otp" component={OtpScreen} />
+    <AuthStack.Screen
+      name="SignUp"
+      component={SignUpScreen}
+      options={{ title: "Sign Up", headerTitleAlign: "center" }}
+    />
+  </AuthStack.Navigator>
 );
 
 const HomeStack = createStackNavigator();
@@ -147,6 +154,14 @@ const DrawerFlow = () => (
 );
 
 export default function AppNavigation() {
+    const [userToken, setUserToken] = React.useState(null);
+    if (userToken != null) {
+        return (
+        <NavigationContainer style={styles.container}>
+            <AuthFlow />
+        </NavigationContainer>
+        );
+    }
     return(
        <NavigationContainer style={styles.container}>
            <DrawerFlow />
